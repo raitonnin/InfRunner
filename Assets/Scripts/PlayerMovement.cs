@@ -35,4 +35,8 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(Vector3.forward * speed);
         rb.AddForce(movementForce * turnSpeed);
     }
+    void OnCollisionEnter(Collision col)
+    {
+        
+    }
 }
