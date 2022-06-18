@@ -13,12 +13,13 @@ public class GameManager : MonoBehaviour
         {
             gameOver = true;
             Debug.Log("gameover");
+            
             Invoke("Restart", restartTime);
         }
-        
-        void Restart()
-{
-    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-}
     }
+    void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    
 }
