@@ -27,16 +27,16 @@ public class PlayerMovement : MonoBehaviour
     {
         float horizontal = Input.GetAxis("Horizontal");
         movementForce = new Vector3( x: horizontal, y: 0f, z: 0);
-         
+        
+        if (rb.position.y <= -1)
+        {
+            FindObjectOfType<GameManager>().EndGame();
+        }
         
     }
     void Move()
     {   
         rb.AddForce(Vector3.forward * speed);
-        rb.AddForce(movementForce * turnSpeed);
-    }
-    void OnCollisionEnter(Collision col)
-    {
-        
+        rb.AddForce(movementForce * turnSpeed, ForceMode.VelocityChange);
     }
 }
