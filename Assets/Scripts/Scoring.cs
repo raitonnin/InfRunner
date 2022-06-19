@@ -7,8 +7,10 @@ using UnityEngine.UI;
 public class Scoring : MonoBehaviour
 {
     [SerializeField] private Transform player;
-    public TMP_Text scoreText;
-    private TMP_Text youDied;
+    [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private TMP_Text youDied;
+
+    public GameObject youDiedUI;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,5 +25,7 @@ public class Scoring : MonoBehaviour
     public void YouDied()
     {
         youDied.text = "Game Over";
+        youDiedUI.SetActive(true);
+        
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+
     bool gameOver = false;
     private float restartTime = 2.0f;
     public void EndGame()
@@ -13,7 +14,7 @@ public class GameManager : MonoBehaviour
         {
             gameOver = true;
             Debug.Log("gameover");
-            
+            FindObjectOfType<Scoring>().YouDied();
             Invoke("Restart", restartTime);
         }
     }

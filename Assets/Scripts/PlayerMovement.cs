@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
         if (rb.position.y <= -1)
         {
             FindObjectOfType<GameManager>().EndGame();
+            rb.velocity = Vector3.zero;
         }
         
     }
