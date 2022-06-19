@@ -5,9 +5,13 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody rb;
-    public float speed = 10.0f;
-    public float turnSpeed = 50.0f;
+    [SerializeField] private float speed = 10.0f;
+    [SerializeField] private float turnSpeed = 50.0f;
+    [SerializeField] private float jumpForce = 1.0f;
     private Vector3 movementForce;
+    private float maxSpeed = 20;
+    private float terminalVelocity = 10;
+    private bool _jump = false;
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -20,24 +24,42 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         Move();
+        Jump();
+                
     }
 
     // Update is called once per frame
     void Update()
     {
         float horizontal = Input.GetAxis("Horizontal");
+        if (Input.GetKeyDown("space") && IsGrounded())
+        {
+            _jump = true;
+        }
+
+        
         movementForce = new Vector3( x: horizontal, y: 0f, z: 0);
         
         if (rb.position.y <= -1)
         {
             FindObjectOfType<GameManager>().EndGame();
             rb.velocity = Vector3.zero;
-        }
-        
+        }     
     }
+    private bool IsGrounded() => true;
     void Move()
     {   
+        if (rb.velocity.z < maxSpeed){
         rb.AddForce(Vector3.forward * speed);
+        }
         rb.AddForce(movementForce * turnSpeed, ForceMode.VelocityChange);
+    }
+    void Jump()
+    {
+        if(_jump)
+        {
+        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        _jump = false;
+        }
     }
 }
