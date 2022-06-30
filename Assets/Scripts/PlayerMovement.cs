@@ -12,6 +12,10 @@ public class PlayerMovement : MonoBehaviour
     private float maxSpeed = 20;
     private float terminalVelocity = 10;
     private bool _jump = false;
+    private bool IsGrounded = false;
+    [SerializeField]private float groundDistance = 0.4f;
+    public LayerMask groundMask;
+    public Transform groundCheck;
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -31,8 +35,13 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        IsGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        if(IsGrounded && rb.velocity.y < 0)
+        {
+            //set velocity to zero somehow
+        }
         float horizontal = Input.GetAxis("Horizontal");
-        if (Input.GetKeyDown("space") && IsGrounded())
+        if (Input.GetKeyDown("space")&& IsGrounded)
         {
             _jump = true;
         }
@@ -46,7 +55,6 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = Vector3.zero;
         }     
     }
-    private bool IsGrounded() => true;
     void Move()
     {   
         if (rb.velocity.z < maxSpeed){
