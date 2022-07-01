@@ -12,13 +12,15 @@ public class PlayerMovement : MonoBehaviour
     private float maxSpeed = 20;
     private float terminalVelocity = 10;
     private bool _jump = false;
-    private bool IsGrounded = false;
+    private bool isGrounded = false;
     [SerializeField]private float groundDistance = 0.4f;
     public LayerMask groundMask;
     public Transform groundCheck;
+    public BoxCollider playerBoxCollider;
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        playerBoxCollider = GetComponent<BoxCollider>();
     }
     // Start is called before the first frame update
     void Start()
@@ -35,13 +37,14 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        IsGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        if(IsGrounded && rb.velocity.y < 0)
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        if(isGrounded && rb.velocity.y < 0)
         {
             //set velocity to zero somehow
         }
+        
         float horizontal = Input.GetAxis("Horizontal");
-        if (Input.GetKeyDown("space")&& IsGrounded)
+        if (Input.GetKeyDown("space")&& isGrounded)
         {
             _jump = true;
         }
@@ -53,7 +56,8 @@ public class PlayerMovement : MonoBehaviour
         {
             FindObjectOfType<GameManager>().EndGame();
             rb.velocity = Vector3.zero;
-        }     
+        }    
+        
     }
     void Move()
     {   
@@ -64,9 +68,16 @@ public class PlayerMovement : MonoBehaviour
     }
     void Jump()
     {
+        /* 
+        if you spam the jump button you will jump extra times
+        if you hit the jump on the way down and it activates while you aren't on the ground yet you will not get upward momentum but the forces will collide and settle you somewhere inbetween
+        i need to stop the mashing capability from allowing multiple jumps and make it so that the jumps are constrained and serve a less physics momentum purpose but a deliberate purpose where they
+        are extremely replicatable. meaning i may need entirely to ditch the rigidbody no matter how much i really wanted to keep it.
+        */
         if(_jump)
         {
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        Debug.Log("Jump occurred");
         _jump = false;
         }
     }
