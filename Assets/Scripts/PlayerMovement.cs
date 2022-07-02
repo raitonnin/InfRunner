@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundMask;
     public Transform groundCheck;
     public BoxCollider playerBoxCollider;
+    [SerializeField]private float jumpPressedRememberTime = 0.2f;
+    private float jumpPressedRemember = 0f;
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -42,13 +44,19 @@ public class PlayerMovement : MonoBehaviour
         {
             //set velocity to zero somehow
         }
-        
+        jumpPressedRemember -= Time.deltaTime;
         float horizontal = Input.GetAxis("Horizontal");
-        if (Input.GetKeyDown("space")&& isGrounded)
+        if (Input.GetKeyDown("space"))//&& isGrounded)
         {
+            jumpPressedRemember = jumpPressedRememberTime;
+            //_jump = true;
+        }
+        if((jumpPressedRemember > 0) && isGrounded)
+        {
+            jumpPressedRemember = 0;
+            rb.velocity = new Vector3(rb.velocity.x, jumpForce);
             _jump = true;
         }
-
         
         movementForce = new Vector3( x: horizontal, y: 0f, z: 0);
         

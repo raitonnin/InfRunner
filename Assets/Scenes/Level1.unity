@@ -1194,7 +1194,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1368749867
 Transform:
   m_ObjectHideFlags: 0
@@ -2105,7 +2105,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2768849380075001697, guid: cb01aec8986a7bb42ac21caf21a657da, type: 3}
       propertyPath: jumpForce
-      value: 50
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2768849380075001697, guid: cb01aec8986a7bb42ac21caf21a657da, type: 3}
       propertyPath: turnSpeed
@@ -2127,6 +2127,10 @@ PrefabInstance:
       propertyPath: playerBoxCollider
       value: 
       objectReference: {fileID: 1832820978}
+    - target: {fileID: 2768849380075001697, guid: cb01aec8986a7bb42ac21caf21a657da, type: 3}
+      propertyPath: jumpPressedRememberTime
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 2768849380075001700, guid: cb01aec8986a7bb42ac21caf21a657da, type: 3}
       propertyPath: m_Drag
       value: 0
