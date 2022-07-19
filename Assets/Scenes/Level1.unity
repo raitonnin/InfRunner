@@ -31,7 +31,7 @@ RenderSettings:
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 2800000, guid: bb00f1e6066438d4c9bdb8d93f5d4ac8, type: 3}
-  m_SpotCookie: {fileID: 2800000, guid: bb00f1e6066438d4c9bdb8d93f5d4ac8, type: 3}
+  m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
@@ -601,7 +601,7 @@ MonoBehaviour:
   - {fileID: 7777387155494184746, guid: 82b5468f376a0274c8a4b36c8d1f105e, type: 3}
   - {fileID: 2084074283515840833, guid: 985c740fb13f8a548b53a2447fc72324, type: 3}
   distanceMoveForward: 5
-  numberOfBlocksCreated: 50
+  numberOfBlocksCreated: 69
 --- !u!1 &1095901231
 GameObject:
   m_ObjectHideFlags: 0
