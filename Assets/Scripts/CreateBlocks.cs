@@ -30,11 +30,15 @@ public class CreateBlocks : MonoBehaviour
     void Update () {
 		//CreateFloor
 		CreateFloor();
-
+		CreateWalls();
 
 
 
 		//CreateBlocks
+		
+	}
+	public void CreateWalls()
+	{
 		if (place > 0) 
 		{
 			SelectBlockType(barriers[Random.Range (0, barriers.Length)]);
@@ -42,7 +46,6 @@ public class CreateBlocks : MonoBehaviour
 			moveForward = moveForward + distanceMoveForward;
 		}
 	}
-
 	public void SelectBlockType (GameObject RandomSelectedWall)
 	{
 		Instantiate (RandomSelectedWall, new Vector3 (transform.position.x + Random.Range (-15, 15), 0.5f, transform.position.z + Random.Range (-5, 5) + moveForward), Quaternion.Euler(0, 180, 0));

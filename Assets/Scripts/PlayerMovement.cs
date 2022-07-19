@@ -63,8 +63,7 @@ public class PlayerMovement : MonoBehaviour
         }    
         if (rb.velocity.y < 4 && !isGrounded)
         {
-            Physics.gravity = new Vector3(0, -11f, 0);
-            Debug.Log(Physics.gravity);
+            Physics.gravity = new Vector3(0, -16f, 0);
         }
         else
         {
@@ -84,7 +83,6 @@ public class PlayerMovement : MonoBehaviour
         {
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         _jump = false;
-        Debug.Log(Physics.gravity);
         }
     }
 }
