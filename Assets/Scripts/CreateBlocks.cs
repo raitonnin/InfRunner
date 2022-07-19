@@ -11,19 +11,19 @@ public class CreateBlocks : MonoBehaviour
     private int floorDistance = 250;
 
 
-	//CreateBlocks
-	public int place = 1000;
 	
 
 	
-	public bool yeet = true;
+
 	private int moveForward = 0;
-	public Transform[] barriers;
-	public int currentStep = 0;
+	public GameObject[] barriers;
+	private int currentStep = 0;
 
 	//Specifies approx distance between block spawn points
 	//TODO: Have variable slowly decrease as score increases
 	public int distanceMoveForward;
+	public int numberOfBlocksCreated;
+	private int place;
 
 	
     // Start is called before the first frame update
@@ -43,7 +43,7 @@ public class CreateBlocks : MonoBehaviour
 		}
 	}
 
-	public void SelectBlockType (Transform RandomSelectedWall)
+	public void SelectBlockType (GameObject RandomSelectedWall)
 	{
 		Instantiate (RandomSelectedWall, new Vector3 (transform.position.x + Random.Range (-15, 15), 0.5f, transform.position.z + Random.Range (-5, 5) + moveForward), Quaternion.Euler(0, 180, 0));
 	}
@@ -55,6 +55,8 @@ public class CreateBlocks : MonoBehaviour
 
             divideBy = divideBy + 250;
             floorDistance = floorDistance + 250;
+
+			place = numberOfBlocksCreated;//create more walls
         }
 	}
 
