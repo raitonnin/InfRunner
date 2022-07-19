@@ -13,5 +13,6 @@ void OnCollisionEnter (Collision col)
         movement.enabled = false;
         FindObjectOfType<GameManager>().EndGame();
     }
+    
 }
 }
