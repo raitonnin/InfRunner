@@ -12,11 +12,11 @@ public class PlayerMovement : MonoBehaviour
     private float maxSpeed = 20;
     private bool _jump = false;
     private bool isGrounded = false;
-    [SerializeField]private float groundDistance = 0.4f;
+    private float groundDistance = 0.4f;
     public LayerMask groundMask;
     public Transform groundCheck;
     public BoxCollider playerBoxCollider;
-    [SerializeField]private float jumpPressedRememberTime = 0.2f;
+    private float jumpPressedRememberTime = 0.2f;
     private float jumpPressedRemember = 0f;
     void Awake()
     {
@@ -55,7 +55,9 @@ public class PlayerMovement : MonoBehaviour
         }
         
         movementForce = new Vector3( x: horizontal, y: 0f, z: 0);
-        
+        /*The way my jump works currently is at the height of the parabola gravity kicks up to drop you faster. It isnt intelligent enough to know you arent holding the jump key down but it works half decent
+        There is a key press timer that recalls for a certain amount of time the last time you pressed the button to jump and will auto jump for you when near the ground though. the time is short. this code is checked 
+        before the isgrounded variables and then if it remembers the press or is being pressed now and is on the ground at the moment you will jump. applying the rigid bodys velocity a new v3.*/
         if (rb.position.y <= -1)
         {
             FindObjectOfType<GameManager>().EndGame();
@@ -63,12 +65,13 @@ public class PlayerMovement : MonoBehaviour
         }    
         if (rb.velocity.y < 4 && !isGrounded)
         {
-            Physics.gravity = new Vector3(0, -11f, 0);
+            Physics.gravity = new Vector3(0, -16f, 0);
             Debug.Log(Physics.gravity);
         }
         else
         {
             Physics.gravity = new Vector3(0, -9.81f, 0);
+            Debug.Log(Physics.gravity);
         }
     }
     void Move()
