@@ -483,11 +483,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1832820977}
   floorPieceTransform: {fileID: 5637587357451546186, guid: 4af923e91e5641c4dba83398aca9fa5d, type: 3}
+  place: 50000
   barriers:
   - {fileID: 3681927347249557147, guid: 8c27d93a86b95984b991debae484814d, type: 3}
   - {fileID: 2084074283515840837, guid: 985c740fb13f8a548b53a2447fc72324, type: 3}
   - {fileID: 7777387155494184750, guid: 82b5468f376a0274c8a4b36c8d1f105e, type: 3}
-  difficulty: 5
+  difficulty: 2
 --- !u!1 &1095901231
 GameObject:
   m_ObjectHideFlags: 0

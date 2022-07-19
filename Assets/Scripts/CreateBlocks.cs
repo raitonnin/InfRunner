@@ -12,7 +12,7 @@ public class CreateBlocks : MonoBehaviour
 
 
 	//CreateBlocks variables
-	private int place = 1000;
+	 [SerializeField] private int place = 1000;
 	private int distanceFromPlayerStart = 0;
 	public Transform[] barriers;
 	// (NO REFERENCES IN THE CODE) private int currentStep = 0;
@@ -31,6 +31,8 @@ public class CreateBlocks : MonoBehaviour
 		CreateFloor();
 
 		//CreateBlocks
+		/*This doesnt work, it only makes a set amount of blocks one time and places them so far ahead. we need to adjust it so that it places them on the fly like the floor does.
+		ReItterate what the floor does nuke this code basically*/
 		if (place > 0) 
 		{
 			SelectBlockType(barriers[Random.Range (0, barriers.Length)]);
