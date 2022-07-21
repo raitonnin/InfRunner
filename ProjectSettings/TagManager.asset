@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Wall
   - Eraser
+  - Ground
   layers:
   - Default
   - TransparentFX
