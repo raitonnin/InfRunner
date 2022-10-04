@@ -4,38 +4,19 @@ using UnityEngine;
 
 public class CreateBlocks : MonoBehaviour
 {
-	//CreateFloor
 	private int divideBy = 10;
     [SerializeField] private Transform player;
     public Transform floorPiece;
     private int floorDistance = 250;
-
-
-	
-
-	
-
 	private int moveForward = 0;
 	public GameObject[] barriers;
-	private int currentStep = 0;
-
 	//Specifies approx distance between block spawn points
-	//TODO: Have variable slowly decrease as score increases
 	public int distanceMoveForward;
 	public int numberOfBlocksCreated;
 	private int place;
-
-	
-    // Start is called before the first frame update
     void Update () {
-		//CreateFloor
 		CreateFloor();
 		CreateWalls();
-
-
-
-		//CreateBlocks
-		
 	}
 	public void CreateWalls()
 	{
@@ -62,10 +43,4 @@ public class CreateBlocks : MonoBehaviour
 			place = numberOfBlocksCreated;//create more walls
         }
 	}
-
-
-
-
-
-
 	}
